@@ -1,5 +1,8 @@
 import axios from "axios";
 
-const client = axios.create({ baseURL: "http://localhost:8000/api" });
+// https://movie-review-app-backend-nqiu.onrender.com/api
+const client = axios.create({
+  baseURL: "https://movie-review-app-backend-nqiu.onrender.com/api",
+});
 
 export default client;
