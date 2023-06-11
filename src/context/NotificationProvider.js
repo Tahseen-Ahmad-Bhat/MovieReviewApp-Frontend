@@ -35,7 +35,7 @@ export default function NotificationProvider({ children }) {
     <NotificationContext.Provider value={{ updateNotification }}>
       {children}
       {notification && (
-        <div className="fixed -right-32 top-32 bg-red-500 max-w-sm -translate-x-1/2 shadow-md shadow-gray-400 rounded flash">
+        <div className="fixed -right-20 top-20 bg-red-500 max-w-sm -translate-x-1/2 shadow-md shadow-gray-400 rounded flash">
           <p
             className={
               classes +
