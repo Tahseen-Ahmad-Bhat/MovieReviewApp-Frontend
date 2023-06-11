@@ -39,7 +39,7 @@ export default function NotificationProvider({ children }) {
           <p
             className={
               classes +
-              " text-white px-4 py-2 rounded font-semibold text-xl w-full"
+              " text-white px-4 py-2 rounded font-semibold md:text-xl text-base w-full"
             }
           >
             {notification}
