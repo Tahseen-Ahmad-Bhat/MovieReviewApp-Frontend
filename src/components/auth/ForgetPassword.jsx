@@ -36,7 +36,10 @@ export default function ForgetPassword() {
   return (
     <FormContainer>
       <Container>
-        <form onSubmit={handleSubmit} className={commonModalClasses + " w-96"}>
+        <form
+          onSubmit={handleSubmit}
+          className={commonModalClasses + " md:w-96"}
+        >
           <Title>Please Enter Your Email</Title>
           <FormInput
             onChange={handleChange}

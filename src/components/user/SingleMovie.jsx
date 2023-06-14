@@ -9,6 +9,7 @@ import AddRatingModal from "../modals/AddRatingModal";
 import CustomButtonLink from "../CustomButtonLink";
 import ProfileModal from "../modals/ProfileModal";
 import { convertReviewCount } from "../../utils/helper";
+import PleaseWait from "../PleaseWait";
 
 const convertDate = (date = "") => {
   return date.split("T")[0];
@@ -62,14 +63,7 @@ export default function SingleMovie() {
     if (movieId) fetchMovie();
   }, [movieId]);
 
-  if (!ready)
-    return (
-      <div className="h-screen flex justify-center items-center dark:bg-primary  bg-white">
-        <p className="text-light-subtle dark:text-dark-subtle animate-pulse text-2xl">
-          Please wait
-        </p>
-      </div>
-    );
+  if (!ready) return <PleaseWait />;
 
   const {
     id,

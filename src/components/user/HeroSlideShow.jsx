@@ -3,6 +3,7 @@ import { getLatestUploads } from "../../api/movie";
 import { useNotification } from "../../hooks";
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import PleaseWait from "../PleaseWait";
 
 let count = 0;
 let intervalId;
@@ -15,6 +16,7 @@ export default function HeroSlideShow() {
   const [slides, setSlides] = useState([]);
   const [upNext, setUpNext] = useState([]);
   const [visible, setVisible] = useState(true);
+  const [ready, setReady] = useState(false);
 
   //   const { updateNotification } = useNotification();
   const slideRef = useRef();
@@ -25,6 +27,7 @@ export default function HeroSlideShow() {
 
     if (error) return;
     setSlides([...movies]);
+    setReady(true);
     setCurrentSlide(movies[0]);
   };
 
@@ -122,6 +125,8 @@ export default function HeroSlideShow() {
       updateUpNext(count);
     } else stopSlideShow();
   }, [slides.length, visible]);
+
+  if (!ready) return <PleaseWait />;
 
   return (
     <div className="w-full flex">

@@ -114,15 +114,15 @@ export default function EmailVerification() {
   return (
     <FormContainer>
       <Container>
-        <form onSubmit={handleSubmit} className={commonModalClasses}>
+        <form onSubmit={handleSubmit} className={commonModalClasses + " m-3"}>
           <div>
             <Title>Please enter the OTP to verify your email</Title>
-            <p className="text-center dark:text-dark-subtle text-light-subtle">
+            <p className="text-center dark:text-dark-subtle text-light-subtle text-sm">
               OTP has been sent to your email
             </p>
           </div>
 
-          <div className="flex justify-between items-center space-x-4">
+          <div className="flex justify-between items-center md:space-x-4 space-x-2">
             {otp.map((_, index) => {
               return (
                 <input
@@ -132,7 +132,7 @@ export default function EmailVerification() {
                   value={otp[index]}
                   onChange={handleOtpChange}
                   onKeyDown={(e) => handleKeyDown(e, index)}
-                  className="w-12 h-12 border-2 dark:border-dark-subtle border-light-subtle dark:focus:border-white focus:border-primary  rounded bg-transparent outline-none dark:text-white text-primary text-center font-semibold text-xl "
+                  className="md:w-12 w-10 h-12 border-2 dark:border-dark-subtle border-light-subtle dark:focus:border-white focus:border-primary  rounded bg-transparent outline-none dark:text-white text-primary text-center font-semibold text-xl "
                 />
               );
             })}
@@ -143,7 +143,7 @@ export default function EmailVerification() {
             <button
               type="button"
               onClick={handleOTPResend}
-              className="dark:text-white text-blue-500 font-semibold hover:underline mt-2"
+              className="dark:text-white text-blue-500 md:font-semibold hover:underline mt-2"
             >
               I don't have OTP
             </button>
