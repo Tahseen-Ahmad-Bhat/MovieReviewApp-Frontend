@@ -12,6 +12,7 @@ import { forgetPassword } from "../../api/auth";
 
 export default function ForgetPassword() {
   const [email, setEmail] = useState("");
+  const [busy, setBusy] = useState(false);
 
   const { updateNotification } = useNotification();
 
@@ -26,8 +27,9 @@ export default function ForgetPassword() {
 
     if (!isValidEmail(email))
       return updateNotification("error", "Invalid Email!");
-
+    setBusy(true);
     const { error, message } = await forgetPassword(email);
+    setBusy(false);
     if (error) return updateNotification("error", error);
 
     updateNotification("success", message);
@@ -49,7 +51,7 @@ export default function ForgetPassword() {
             placeholder="jhon@email.com"
           />
 
-          <Submit value="Send Link" />
+          <Submit value="Send Link" busy={busy} />
 
           <div className="flex justify-between">
             <CustomLink to="/auth/sign-in">Sign In</CustomLink>

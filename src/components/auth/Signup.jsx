@@ -33,6 +33,7 @@ function Signup() {
     email: "",
     password: "",
   });
+  const [busy, setBusy] = useState(false);
 
   const navigate = useNavigate();
 
@@ -53,7 +54,9 @@ function Signup() {
 
     if (!ok) return updateNotification("error", error);
 
+    setBusy(true);
     const response = await createUser(userInfo);
+    setBusy(false);
     if (response.error) return updateNotification("error", response.error);
 
     navigate("/auth/email-verification", {
@@ -95,7 +98,7 @@ function Signup() {
             placeholder="*********"
             type="password"
           />
-          <Submit value="Sign Up" />
+          <Submit value="Sign Up" busy={busy} />
 
           <div className="flex justify-between">
             <CustomLink to="/auth/forget-password">Forget Password</CustomLink>
